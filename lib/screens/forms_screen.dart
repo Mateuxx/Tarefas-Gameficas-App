@@ -130,17 +130,18 @@ class _FormsScreenState extends State<FormsScreen> {
                       onPressed: () {
                         //Verifica se todas as validações são válidas
                         if (_formKey.currentState!.validate()) {
-                          print(nameControler.text);
-                          print(dificuldadeControler.text);
-                          print(imageControler.text);
+                          // print(nameControler.text);
+                          // print(dificuldadeControler.text);
+                          // print(imageControler.text);
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
-                              content: Text("Printando nova tarefa"),
+                              content: Text("Criando uma nova tarefa"),
                             ),
                           );
+                          Navigator.pop(context); //Volta para a tela anterior
                         }
                       },
-                      child: Text("Adicionar")),
+                      child: const Text("Adicionar")),
                 ],
               ),
             ),

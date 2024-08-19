@@ -85,14 +85,14 @@ class _TasksState extends State<Tasks> {
                       Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Container(
-                          height: 52,
-                          width: 52,
+                          height: 75,
+                          width: 75,
                           child: ElevatedButton(
                             onPressed: levelUp,
-                            child: Column(
+                            child: const Column(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               crossAxisAlignment: CrossAxisAlignment.end,
-                              children: const [
+                              children: [
                                 Icon(Icons.arrow_drop_up),
                                 Text(
                                   'UP',
@@ -127,7 +127,7 @@ class _TasksState extends State<Tasks> {
                       padding: const EdgeInsets.all(12.0),
                       child: Text(
                         'Nivel: $level',
-                        style: TextStyle(color: Colors.white, fontSize: 16),
+                        style: const TextStyle(color: Colors.white, fontSize: 16),
                       ),
                     ),
                   ],
