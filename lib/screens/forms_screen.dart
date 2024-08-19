@@ -16,6 +16,7 @@ class _FormsScreenState extends State<FormsScreen> {
 
   //Variavel que recebe um estado global de um form
   final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -127,10 +128,16 @@ class _FormsScreenState extends State<FormsScreen> {
                   ),
                   ElevatedButton(
                       onPressed: () {
-                        if(_formKey.currentState!.validate()) {
+                        //Verifica se todas as validações são válidas
+                        if (_formKey.currentState!.validate()) {
                           print(nameControler.text);
                           print(dificuldadeControler.text);
                           print(imageControler.text);
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text("Printando nova tarefa"),
+                            ),
+                          );
                         }
                       },
                       child: Text("Adicionar")),
