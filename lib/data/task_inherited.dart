@@ -12,7 +12,7 @@ class TaskInherited extends InheritedWidget {
     Task('Aprender Flutter', 'assets/images/dash.png', 3),
     Task('Andar de Bike', 'assets/images/bike.webp', 2),
     Task('Meditar', 'assets/images/meditar.jpeg', 5),
-    Task('Ler', 'assets/images/livro.jpg', 4),
+    Task('Ler', 'assets/images/Livro.png', 4),
     Task('Jogar', 'assets/images/jogar.jpg', 1),
   ];
 

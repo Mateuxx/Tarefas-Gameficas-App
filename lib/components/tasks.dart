@@ -1,4 +1,3 @@
-
 import 'package:alura_flutter_curso_1/components/difficulty.dart';
 import 'package:flutter/material.dart';
 
@@ -16,6 +15,13 @@ class Task extends StatefulWidget {
 
 class _TasksState extends State<Task> {
   int level = 1;
+
+  bool assetOrNetwork() {
+    if (widget.foto.contains("http")) {
+      return false;
+    }
+    return true;
+  }
 
   void levelUp() {
     setState(() {
@@ -56,14 +62,18 @@ class _TasksState extends State<Task> {
                           color: Colors.black12,
                         ),
                         child: ClipRRect(
-                          borderRadius: BorderRadius.circular(4),
-                          child: Image.asset(
-                            widget.foto,
-                            height: 100,
-                            width: 72,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
+                            borderRadius: BorderRadius.circular(4),
+                            child: assetOrNetwork()
+                                ? Image.asset(
+                                    widget.foto,
+                                    height: 100,
+                                    width: 72,
+                                    fit: BoxFit.cover,
+                                  )
+                                : Image.network(
+                                    // se for falso
+                                    widget.foto, fit: BoxFit.cover,
+                                  )),
                       ),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -127,7 +137,8 @@ class _TasksState extends State<Task> {
                       padding: const EdgeInsets.all(12.0),
                       child: Text(
                         'Nivel: $level',
-                        style: const TextStyle(color: Colors.white, fontSize: 16),
+                        style:
+                            const TextStyle(color: Colors.white, fontSize: 16),
                       ),
                     ),
                   ],

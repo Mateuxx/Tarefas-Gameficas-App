@@ -105,8 +105,8 @@ class _FormScreenState extends State<FormScreen> {
                     ),
                   ),
                   Container(
-                    height: 100,
-                    width: 72,
+                    height: 200,
+                    width: 172,
                     decoration: BoxDecoration(
                       color: Colors.blue,
                       borderRadius: BorderRadius.circular(10),
@@ -118,7 +118,7 @@ class _FormScreenState extends State<FormScreen> {
                         imageController.text,
                         errorBuilder: (BuildContext context, Object exception,
                             StackTrace? stackTrace) {
-                          return Image.asset('assets/images/nophoto.png');
+                          return Image.asset('assets/images/no-image-icon-23483.png');
                         },
                         fit: BoxFit.cover,
                       ),
@@ -129,7 +129,7 @@ class _FormScreenState extends State<FormScreen> {
                       if (_formKey.currentState!.validate()) {
                         // print(nameController.text);
                         // print(difficultyController.text);
-                        // print(imageController.text);
+                        // print(imageController.text);/home/matheus.nobrega/Downloads/N1PC290102_325409143_USER@2024-08-19_11_29_33_+0800_IKSWU-205232/aplogcat-main_1.txt
                         TaskInherited.of(widget.taskContext).newTask(
                             nameController.text,
                             imageController.text,
