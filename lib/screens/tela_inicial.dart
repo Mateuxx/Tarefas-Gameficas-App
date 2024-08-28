@@ -21,7 +21,7 @@ class _InitialScreenState extends State<InitialScreen> {
       body: ListView(
         children: TaskInherited.of(context).taskList,
         //padding la em baixao para o button não ficar me cima dele
-        padding: EdgeInsets.only(top: 8, bottom: 70),
+        padding: const EdgeInsets.only(top: 8, bottom: 70),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
