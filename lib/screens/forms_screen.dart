@@ -1,3 +1,5 @@
+import 'package:alura_flutter_curso_1/components/tasks.dart';
+import 'package:alura_flutter_curso_1/data/task_dao.dart';
 import 'package:flutter/material.dart';
 
 import '../data/task_inherited.dart';
@@ -118,7 +120,8 @@ class _FormScreenState extends State<FormScreen> {
                         imageController.text,
                         errorBuilder: (BuildContext context, Object exception,
                             StackTrace? stackTrace) {
-                          return Image.asset('assets/images/no-image-icon-23483.png');
+                          return Image.asset(
+                              'assets/images/no-image-icon-23483.png');
                         },
                         fit: BoxFit.cover,
                       ),
@@ -127,13 +130,12 @@ class _FormScreenState extends State<FormScreen> {
                   ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        // print(nameController.text);
-                        // print(difficultyController.text);
-                        // print(imageController.text);/home/matheus.nobrega/Downloads/N1PC290102_325409143_USER@2024-08-19_11_29_33_+0800_IKSWU-205232/aplogcat-main_1.txt
-                        TaskInherited.of(widget.taskContext).newTask(
+                        TaskDao().save(
+                          Task(
                             nameController.text,
                             imageController.text,
-                            int.parse(difficultyController.text));
+                            int.parse(difficultyController.text),
+                          ),);
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
                             content: Text('Criando uma nova Tarefa'),
