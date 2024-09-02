@@ -1,7 +1,6 @@
 import 'package:alura_flutter_curso_1/data/task_dao.dart';
 import 'package:flutter/material.dart';
 import '../components/tasks.dart';
-import '../data/task_inherited.dart';
 import 'forms_screen.dart';
 
 class InitialScreen extends StatefulWidget {
@@ -17,6 +16,14 @@ class _InitialScreenState extends State<InitialScreen> {
     return Scaffold(
       appBar: AppBar(
         leading: Container(),
+        actions: [
+          IconButton(
+              onPressed: () {
+                setState(() {
+                });
+              },
+              icon: const Icon(Icons.refresh))
+        ],
         title: const Text('Tarefas'),
       ),
       body: Padding(
@@ -30,32 +37,38 @@ class _InitialScreenState extends State<InitialScreen> {
             //só constroi as tarefas que estão aparecendo na tela - Bom para muitos dados
             switch (snapshot.connectionState) {
               case ConnectionState.none:
-                return const Center(child: Column(children: [
-                  CircularProgressIndicator(),
-                  Text("Carregando"),
-                ],
-                ),
+                return const Center(
+                  child: Column(
+                    children: [
+                      CircularProgressIndicator(),
+                      Text("Carregando"),
+                    ],
+                  ),
                 );
                 break;
               case ConnectionState.waiting:
-                return const Center(child: Column(children: [
-                  CircularProgressIndicator(),
-                  Text("Carregando"),
-                ],
-                ),
+                return const Center(
+                  child: Column(
+                    children: [
+                      CircularProgressIndicator(),
+                      Text("Carregando"),
+                    ],
+                  ),
                 );
                 break;
               case ConnectionState.active:
-                return const Center(child: Column(children: [
-                  CircularProgressIndicator(),
-                  Text("Carregando"),
-                ],
-                ),
+                return const Center(
+                  child: Column(
+                    children: [
+                      CircularProgressIndicator(),
+                      Text("Carregando"),
+                    ],
+                  ),
                 );
                 break;
               case ConnectionState.done:
 
-              /// Se tiver dados:
+                /// Se tiver dados:
                 if (snapshot.hasData && items != null) {
                   /// Se Empty for diferente de zero
                   if (items.isNotEmpty) {
@@ -92,15 +105,14 @@ class _InitialScreenState extends State<InitialScreen> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (contextNew) =>
-                  FormScreen(
-                    taskContext: context,
-                  ),
+              builder: (contextNew) => FormScreen(
+                taskContext: context,
+              ),
             ),
+
             ///Quando voltar de formScreen ele reconstroi a tela no qual
             ///foi mudado o banco de dados.
-          ).then((onValue) =>
-              setState(() {
+          ).then((onValue) => setState(() {
                 print("Recarregandoa  tela inicial");
               }));
         },
